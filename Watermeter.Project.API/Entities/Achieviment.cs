@@ -1,22 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Watermeter.Project.API.Entities
+namespace Watermeter.Project.API
 {
-    public class Achieviment
+    public partial class Achieviment
     {
-        [Key]
-        public int Id { get; set; }
+        public int IdAchieviment { get; set; }
+        public string Name { get; set; } = null!;
+        public string? Description { get; set; }
+        public int IsAchieved { get; set; }
+        public int IdOwner { get; set; }
 
-        [Required, MaxLength(50)]
-        public string Name { get; set; }
-
-        [MaxLength(100)]
-        public string Description { get; set; }
-
-        [Required]
-        public bool IsAchieved { get; set; }
-        public DateOnly DataAchieved { get; set; }
-        public int OwnerId { get; set; }
-        public Owner Owner { get; set; }
+        public virtual Owner IdOwnerNavigation { get; set; } = null!;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Services;
 using Watermeter.Project.API.Services.Interfaces;
 
 namespace Watermeter.Project.API.Controllers
@@ -12,28 +13,87 @@ namespace Watermeter.Project.API.Controllers
             this.service = service;
         }
 
-        [HttpPost("PostMeasure")]
-        public IActionResult PostWaterMeasure([FromBody]ArduinoModel model)
+        [HttpPost("CreateArduino")]
+        public async Task<IActionResult> CreateArduino([FromBody]ArduinoCreateModel model)
         {
             try
             {
-                service.PostMeasure(model);
-                return Ok();
+                await service.CreateArduino(model);
+                return Ok(model);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
             }
         }
-        public IActionResult Ping()
+        [HttpGet("GetArduino")]
+        public async Task<IActionResult> GetArduino([FromQuery]int id)
         {
             try
             {
-                return Ok();
+                return Ok(await service.GetArduinoAsync(id));
             }
-            catch
+            catch (NullReferenceException)
             {
-                return BadRequest("Not pong :(");
+                return NotFound("Arduino não encontrado");
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
+            }
+        }
+        [HttpGet("GetArduinoUpdateModel")]
+        public async Task<IActionResult> GetArduinoUpdateModel([FromQuery] int id)
+        {
+            try
+            {
+                return Ok(await service.GetUpdateModelAsync(id));
+            }
+            catch (NullReferenceException)
+            {
+                return NotFound("Arduino não encontrado");
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
+            }
+        }
+        [HttpDelete("DeleteArduino")]
+        public async Task<IActionResult> DeleteArduino([FromQuery] int id)
+        {
+            try
+            {
+                if (await service.DeleteArduino(id))
+                    return Ok();
+                else
+                    return BadRequest("Houve algum erro para deletar");
+            }
+            catch (NullReferenceException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
+            }
+        }
+        [HttpPatch("UpdateArduino")]
+        public async Task<IActionResult> UpdateArduinoName([FromQuery] int id, [FromBody] ArduinoNameUpdateModel model)
+        {
+            try
+            {
+                if (await service.UpdateArduino(id, model))
+                    return Ok();
+                else
+                    return BadRequest("Houve algum erro para atualizar");
+            }
+            catch (NullReferenceException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
             }
         }
     }

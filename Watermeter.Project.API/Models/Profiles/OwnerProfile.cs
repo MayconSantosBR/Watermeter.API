@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Routing.Constraints;
-using Watermeter.Project.API.Entities;
 
 namespace Watermeter.Project.API.Models.Profiles
 {
@@ -11,7 +10,7 @@ namespace Watermeter.Project.API.Models.Profiles
             CreateMap<Owner, OwnerModel>();
             CreateMap<OwnerModel, Owner>();
             CreateMap<Owner, Owner>()
-                .ForMember(src => src.Id, c => c.Ignore());
+                .ForMember(src => src.IdOwner, c => c.Ignore());
         }
     }
 }

@@ -46,6 +46,18 @@ namespace Watermeter.Project.API.Controllers
                 return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
             }
         }
+        [HttpGet("GetOwnersList")]
+        public async Task<IActionResult> GetOwnersAsync()
+        {
+            try
+            {
+                return Ok(await ownerService.GetOwnersList());
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
+            }
+        }
         [HttpGet("GetOwnerModel")]
         public async Task<IActionResult> GetOwnerModel([FromQuery]int id)
         {

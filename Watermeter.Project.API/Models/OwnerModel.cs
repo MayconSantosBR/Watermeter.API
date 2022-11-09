@@ -18,23 +18,5 @@ namespace Watermeter.Project.API.Models
 
         [Required, MinLength(8), MaxLength(20)]
         public string Password { get; set; }
-
-        [Required, MaxLength(100)]
-        public string City { get; set; }
-
-        [Required, MaxLength(2)]
-        public string State { get; set; }
-
-        [Required, MaxLength(100)]
-        public string Neighborhood { get; set; }
-
-        [Required, MaxLength(50)]
-        public string Number { get; set; }
-
-        [Required, MaxLength(9)]
-        public string PostalCode { get; set; }
-
-        [Required, MaxLength(100)]
-        public string Street { get; set; }
     }
 }

@@ -1,9 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using Watermeter.Project.API;
-using Watermeter.Project.API.Data.Context;
+using Watermeter.Project.API.Data.Contexts;
 using Watermeter.Project.API.Data.Repositories;
-using Watermeter.Project.API.Entities;
+using Watermeter.Project.API.Data.Repositories.Interfaces;
 using Watermeter.Project.API.Models;
 using Watermeter.Project.API.Models.Profiles;
 using Watermeter.Project.API.Services;
@@ -13,7 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -26,6 +28,7 @@ builder.Services.AddDbContext<MainContext>(option =>
 builder.Services.AddAutoMapper(typeof(MapperService));
 
 builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
+builder.Services.AddScoped<IArduinoRepository, ArduinoRepository>();
 builder.Services.AddScoped<IArduinoService, ArduinoService>();
 builder.Services.AddScoped<IOwnerService, OwnerService>();
 

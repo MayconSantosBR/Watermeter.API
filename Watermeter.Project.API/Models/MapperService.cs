@@ -10,6 +10,7 @@ namespace Watermeter.Project.API.Models
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<OwnerProfile>();
+                cfg.AddProfile<ArduinoProfile>();
             });
 
             configuration.CreateMapper();

@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Watermeter.Project.API.Data.Context;
-using Watermeter.Project.API.Data.Repositories;
-using Watermeter.Project.API.Entities;
+using Watermeter.Project.API.Data.Repositories.Interfaces;
 using Watermeter.Project.API.Models;
 using Watermeter.Project.API.Services.Interfaces;
 
@@ -40,6 +38,17 @@ namespace Watermeter.Project.API.Services
                 throw;
             }
         }
+        public async Task<List<Owner>> GetOwnersList()
+        {
+            try
+            {
+                return await repository.GetList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public async Task<OwnerModel> GetOwnerModel(int id)
         {
             try
@@ -70,7 +79,7 @@ namespace Watermeter.Project.API.Services
             {
                 var owner = await repository.GetSingle(id);
                 var newOwner = msvc.Map<Owner>(model);
-                newOwner.Id = owner.Id;
+                newOwner.IdOwner = owner.IdOwner;
                 await repository.Update(newOwner);
                 return true;
             }

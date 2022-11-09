@@ -1,18 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Watermeter.Project.API.Entities
+namespace Watermeter.Project.API
 {
-    public class History
+    public partial class History
     {
-        [Key]
-        public int Id { get; set; }
-        public string Begin { get; set; }
-        public string End { get; set; }
+        public int IdHistory { get; set; }
+        public int IdArduino { get; set; }
+        public int IdOwner { get; set; }
+        public DateTime? Begin { get; set; }
+        public DateTime? End { get; set; }
         public DateOnly Date { get; set; }
-        public double Waterflow { get; set; }
-        public int OwnerId { get; set; }
-        public Owner Owner { get; set; }
-        public int ArduinoId { get; set; }
-        public Arduino Arduino { get; set; }
+        public decimal? Waterflow { get; set; }
+
+        public virtual Arduino IdArduinoNavigation { get; set; } = null!;
+        public virtual Owner IdOwnerNavigation { get; set; } = null!;
     }
 }
