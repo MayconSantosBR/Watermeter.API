@@ -41,6 +41,17 @@ namespace Watermeter.Project.API.Services
                 throw;
             }
         }
+        public async Task<List<Arduino>> GetArduinosListAsync()
+        {
+            try
+            {
+                return await arduinoRepository.GetArduinos();
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public async Task<ArduinoNameUpdateModel> GetUpdateModelAsync(int id)
         {
             try
@@ -72,6 +83,7 @@ namespace Watermeter.Project.API.Services
                 var arduino = await arduinoRepository.GetArduino(id);
                 var newArduino = msvc.Map<Arduino>(model);
                 newArduino.IdArduino = arduino.IdArduino;
+                newArduino.IdOwner = arduino.IdOwner;
                 await arduinoRepository.Update(newArduino);
                 return true;
             }

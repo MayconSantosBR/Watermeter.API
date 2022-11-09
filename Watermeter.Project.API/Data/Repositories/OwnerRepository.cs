@@ -63,15 +63,19 @@ namespace Watermeter.Project.API.Data.Repositories
         {
             try
             {
-                List<Achieviment> achieviments = await context.Achieviments.Where(c => c.IdOwner == id).ToListAsync();
-                List<Arduino> arduinos = await context.Arduinos.Where(c => c.IdOwner == id).ToListAsync();
-                List<History> histories = await context.Histories.Where(c => c.IdOwner == id).ToListAsync();
+                var owner = await context.Owners.AsNoTracking().FirstOrDefaultAsync(c => c.IdOwner == id);
 
-                
+                if (owner == null)
+                    throw new NullReferenceException();
+
+                var achieviments = await context.Achieviments.AsNoTracking().Where(c => c.IdOwner == id).ToListAsync();
+                var arduinos = await context.Arduinos.AsNoTracking().Where(c => c.IdOwner == id).ToListAsync();
+                var histories = await context.Histories.AsNoTracking().Where(c => c.IdOwner == id).ToListAsync();
+
                 context.Achieviments.RemoveRange(achieviments);
                 context.Histories.RemoveRange(histories);
                 context.Arduinos.RemoveRange(arduinos);
-                context.Owners.Remove(await GetSingle(id));
+                context.Owners.Remove(owner);
                 await context.SaveChangesAsync();
                 return true;
             }

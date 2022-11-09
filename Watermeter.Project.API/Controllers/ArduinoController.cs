@@ -42,6 +42,18 @@ namespace Watermeter.Project.API.Controllers
                 return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
             }
         }
+        [HttpGet("GetArduinoList")]
+        public async Task<IActionResult> GetArduinoList()
+        {
+            try
+            {
+                return Ok(await service.GetArduinosListAsync());
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
+            }
+        }
         [HttpGet("GetArduinoUpdateModel")]
         public async Task<IActionResult> GetArduinoUpdateModel([FromQuery] int id)
         {

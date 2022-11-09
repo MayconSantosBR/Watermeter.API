@@ -40,10 +40,24 @@ namespace Watermeter.Project.API.Data.Repositories
                 throw;
             }
         }
+        public async Task<List<Arduino>> GetArduinos()
+        {
+            try
+            {
+                return await context.Arduinos.ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public async Task<bool> Delete(int id)
         {
             try
             {
+                var histories = await context.Histories.AsNoTracking().Where(c => c.IdArduino == id).ToListAsync();
+
+                context.Histories.RemoveRange(histories);
                 context.Arduinos.Remove(await GetArduino(id));
                 await context.SaveChangesAsync();
                 return true;
