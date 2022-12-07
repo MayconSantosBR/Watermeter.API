@@ -10,5 +10,6 @@ namespace Watermeter.Project.API.Services.Interfaces
         Task<OwnerModel> GetOwnerModel(int id);
         Task<bool> DeleteOwner(int id);
         Task<bool> UpdateOwner(int id, OwnerModel model);
+        Task<bool> ValidateCredentialsAsync(Credentials credentials, string system);
     }
 }

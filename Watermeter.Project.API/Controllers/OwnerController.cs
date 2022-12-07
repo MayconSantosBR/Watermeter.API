@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Linq.Expressions;
 using Watermeter.Project.API.Data.Repositories;
 using Watermeter.Project.API.Models;
 using Watermeter.Project.API.Services.Interfaces;
@@ -110,6 +111,21 @@ namespace Watermeter.Project.API.Controllers
             catch (Exception e)
             {
                 return BadRequest($"Erro: {e.Message} + Stacktrace: {e.StackTrace}");
+            }
+        }
+        [HttpPost("ValidateCredentials")]
+        public async Task<IActionResult> ValidateCredentials([FromBody] Credentials credentials, [FromQuery]string system)
+        {
+            try
+            {
+                if (await ownerService.ValidateCredentialsAsync(credentials, system))
+                    return Ok();
+                else
+                    return BadRequest();
+            }
+            catch
+            {
+                return BadRequest();
             }
         }
     }

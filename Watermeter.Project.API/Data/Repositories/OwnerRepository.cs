@@ -97,5 +97,24 @@ namespace Watermeter.Project.API.Data.Repositories
                 throw;
             }
         }
+        public async Task<bool> ValidateCredentials(Credentials credentials)
+        {
+            try
+            {
+                var user = await context.Owners.FirstOrDefaultAsync(c => c.Email.Equals(credentials.Email));
+
+                if (user == null)
+                    throw new NullReferenceException();
+
+                if (user.Password.Equals(credentials.Password))
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

@@ -88,5 +88,19 @@ namespace Watermeter.Project.API.Services
                 throw;
             }
         }
+        public async Task<bool> ValidateCredentialsAsync(Credentials credentials, string system)
+        {
+            try
+            {
+                if (system.Equals("FrontEndConsole"))
+                    return await repository.ValidateCredentials(credentials);
+                else
+                    return false;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
