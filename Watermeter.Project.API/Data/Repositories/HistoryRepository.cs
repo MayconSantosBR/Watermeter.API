@@ -29,7 +29,7 @@ namespace Watermeter.Project.API.Data.Repositories
         {
             try
             {
-                return await context.Histories.Where(c => c.IdOwner == idOwner).ToListAsync();
+                return await context.Histories.AsNoTracking().Where(c => c.IdOwner == idOwner).ToListAsync();
             }
             catch
             {
