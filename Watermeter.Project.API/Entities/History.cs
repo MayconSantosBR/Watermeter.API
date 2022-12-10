@@ -10,7 +10,7 @@ namespace Watermeter.Project.API
         public int IdOwner { get; set; }
         public DateTime? Begin { get; set; }
         public DateTime? End { get; set; }
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
         public decimal? Waterflow { get; set; }
 
         public virtual Arduino IdArduinoNavigation { get; set; } = null!;

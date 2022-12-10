@@ -7,6 +7,11 @@ namespace Watermeter.Project.API.Controllers
     {
         private readonly IHistoryService service;
 
+        public HistoryController(IHistoryService service)
+        {
+            this.service = service;
+        }
+
         [HttpGet("GetHistoriesById")]
         public async Task<IActionResult> GetHistories([FromQuery]int idOwner)
         {

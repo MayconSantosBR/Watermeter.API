@@ -7,7 +7,7 @@ using Watermeter.Project.API.Models;
 
 namespace Watermeter.Project.API.Data.Repositories
 {
-    public class OwnerRepository: IOwnerRepository
+    public class OwnerRepository : IOwnerRepository
     {
         private readonly MainContext context;
         public OwnerRepository(MainContext context)

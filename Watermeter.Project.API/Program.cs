@@ -27,10 +27,14 @@ builder.Services.AddDbContext<MainContext>(option =>
 
 builder.Services.AddAutoMapper(typeof(MapperService));
 
-builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 builder.Services.AddScoped<IArduinoRepository, ArduinoRepository>();
 builder.Services.AddScoped<IArduinoService, ArduinoService>();
+
+builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 builder.Services.AddScoped<IOwnerService, OwnerService>();
+
+builder.Services.AddScoped<IHistoryRepository, HistoryRepository>();
+builder.Services.AddScoped<IHistoryService, HistoryService>();
 
 var app = builder.Build();
 
