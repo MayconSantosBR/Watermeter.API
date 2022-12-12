@@ -13,7 +13,7 @@ namespace Watermeter.Project.API.Models
         [Required, MaxLength(100)]
         public string Email { get; set; }
 
-        [Required, MaxLength(15)]
+        [MaxLength(15)]
         public string Cellphone { get; set; }
 
         [Required, MinLength(8), MaxLength(20)]
