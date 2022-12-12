@@ -52,6 +52,17 @@ namespace Watermeter.Project.API.Services
                 throw;
             }
         }
+        public async Task<List<Arduino>> GetArduinosListByIdAsync(int idOwner)
+        {
+            try
+            {
+                return await arduinoRepository.GetArduinosById(idOwner);
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public async Task<ArduinoNameUpdateModel> GetUpdateModelAsync(int id)
         {
             try

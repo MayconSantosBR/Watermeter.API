@@ -10,5 +10,6 @@ namespace Watermeter.Project.API.Services.Interfaces
         Task<ArduinoNameUpdateModel> GetUpdateModelAsync(int id);
         Task<bool> DeleteArduino(int id);
         Task<bool> UpdateArduino(int id, ArduinoNameUpdateModel model);
+        Task<List<Arduino>> GetArduinosListByIdAsync(int idOwner);
     }
 }

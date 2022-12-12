@@ -51,6 +51,17 @@ namespace Watermeter.Project.API.Data.Repositories
                 throw;
             }
         }
+        public async Task<List<Arduino>> GetArduinosById(int idOwner)
+        {
+            try
+            {
+                return await context.Arduinos.AsNoTracking().Where(c => c.IdOwner.Equals(idOwner)).ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public async Task<bool> Delete(int id)
         {
             try
