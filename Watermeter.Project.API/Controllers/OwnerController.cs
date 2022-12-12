@@ -118,8 +118,9 @@ namespace Watermeter.Project.API.Controllers
         {
             try
             {
-                if (await ownerService.ValidateCredentialsAsync(credentials, system))
-                    return Ok();
+                var id = await ownerService.ValidateCredentialsAsync(credentials, system);
+                if (id != 0)
+                    return Ok(id);
                 else
                     return BadRequest();
             }

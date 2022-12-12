@@ -97,7 +97,7 @@ namespace Watermeter.Project.API.Data.Repositories
                 throw;
             }
         }
-        public async Task<bool> ValidateCredentials(Credentials credentials)
+        public async Task<int> ValidateCredentials(Credentials credentials)
         {
             try
             {
@@ -107,9 +107,9 @@ namespace Watermeter.Project.API.Data.Repositories
                     throw new NullReferenceException();
 
                 if (user.Password.Equals(credentials.Password))
-                    return true;
+                    return user.IdOwner;
                 else
-                    return false;
+                    return 0;
             }
             catch
             {

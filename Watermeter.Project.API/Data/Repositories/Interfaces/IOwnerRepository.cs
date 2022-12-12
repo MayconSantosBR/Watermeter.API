@@ -11,6 +11,6 @@ namespace Watermeter.Project.API.Data.Repositories.Interfaces
         Task<List<Owner>> GetList();
         Task<bool> Delete(int id);
         Task<bool> Update(Owner model);
-        Task<bool> ValidateCredentials(Credentials credentials);
+        Task<int> ValidateCredentials(Credentials credentials);
     }
 }
