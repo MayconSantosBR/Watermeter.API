@@ -11,6 +11,7 @@ namespace Watermeter.Project.API.Models
             {
                 cfg.AddProfile<OwnerProfile>();
                 cfg.AddProfile<ArduinoProfile>();
+                cfg.AddProfile<UserProfile>();
             });
 
             configuration.CreateMapper();

@@ -4,7 +4,7 @@
     {
         public class Hosts
         {
-            public static readonly string MainDb = "Server=watermeter.cosc2gjkmbir.sa-east-1.rds.amazonaws.com;Port=5432;Database=watermeterdb;User Id=postgres;Password=makelifesimple;";
+            public static readonly string MainDb = "Server=localhost;Port=5432;Database=WatermeterDB;User Id=postgres;Password=makelifesimple;";
         }
     }
 }
