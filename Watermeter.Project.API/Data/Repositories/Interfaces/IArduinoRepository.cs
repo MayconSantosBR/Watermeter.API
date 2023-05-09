@@ -1,4 +1,5 @@
-﻿
+﻿using Watermeter.Project.API.Entities;
+
 namespace Watermeter.Project.API.Data.Repositories.Interfaces
 {
     public interface IArduinoRepository

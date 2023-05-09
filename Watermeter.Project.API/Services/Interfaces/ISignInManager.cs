@@ -1,4 +1,4 @@
-﻿namespace Watermeter.Project.API.Services
+﻿namespace Watermeter.Project.API.Services.Interfaces
 {
     internal interface ISignInManager<T>
     {

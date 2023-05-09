@@ -1,4 +1,6 @@
-﻿namespace Watermeter.Project.API.Data.Repositories.Interfaces
+﻿using Watermeter.Project.API.Entities;
+
+namespace Watermeter.Project.API.Data.Repositories.Interfaces
 {
     public interface IHistoryRepository
     {

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.Win32.SafeHandles;
 using Watermeter.Project.API.Data.Repositories.Interfaces;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Entities;
+using Watermeter.Project.API.Models.Arduino;
 using Watermeter.Project.API.Services.Interfaces;
 
 namespace Watermeter.Project.API.Services

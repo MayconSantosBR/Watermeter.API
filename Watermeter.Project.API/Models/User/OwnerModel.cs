@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Watermeter.Project.API.Models
+namespace Watermeter.Project.API.Models.User
 {
     public class OwnerModel
     {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Watermeter.Project.API.Data.Repositories.Interfaces;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Entities;
+using Watermeter.Project.API.Models.User;
 using Watermeter.Project.API.Services.Interfaces;
 
 namespace Watermeter.Project.API.Services

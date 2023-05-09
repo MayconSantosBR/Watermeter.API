@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Linq.Expressions;
 using Watermeter.Project.API.Data.Repositories;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Models.User;
 using Watermeter.Project.API.Services.Interfaces;
 
 namespace Watermeter.Project.API.Controllers

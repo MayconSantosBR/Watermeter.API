@@ -1,6 +1,6 @@
-﻿
-using System.Net;
-using Watermeter.Project.API.Models;
+﻿using System.Net;
+using Watermeter.Project.API.Entities;
+using Watermeter.Project.API.Models.User;
 
 namespace Watermeter.Project.API.Data.Repositories.Interfaces
 {

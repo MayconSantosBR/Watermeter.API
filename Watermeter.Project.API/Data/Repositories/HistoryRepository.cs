@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Watermeter.Project.API.Data.Contexts;
 using Watermeter.Project.API.Data.Repositories.Interfaces;
+using Watermeter.Project.API.Entities;
 
 namespace Watermeter.Project.API.Data.Repositories
 {

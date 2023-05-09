@@ -1,4 +1,4 @@
-﻿namespace Watermeter.Project.API.Models
+﻿namespace Watermeter.Project.API.Models.History
 {
     public class HistoryCalcs
     {

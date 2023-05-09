@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Watermeter.Project.API
+namespace Watermeter.Project.API.Entities
 {
     public partial class Arduino
     {

@@ -1,6 +1,8 @@
 ﻿using FluentResults;
 using Microsoft.AspNetCore.Identity;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Models.User;
+using Watermeter.Project.API.Models.User.Create;
+using Watermeter.Project.API.Models.User.Login;
 
 namespace Watermeter.Project.API.Services.Interfaces
 {

@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System.Linq;
 using Watermeter.Project.API.Data.Repositories.Interfaces;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Entities;
+using Watermeter.Project.API.Models.History;
 using Watermeter.Project.API.Services.Interfaces;
 using IHistoryRepository = Watermeter.Project.API.Data.Repositories.Interfaces.IHistoryRepository;
 

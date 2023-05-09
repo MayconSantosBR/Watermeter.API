@@ -1,4 +1,5 @@
-﻿using Watermeter.Project.API.Models;
+﻿using Watermeter.Project.API.Entities;
+using Watermeter.Project.API.Models.Arduino;
 
 namespace Watermeter.Project.API.Services.Interfaces
 {

@@ -6,8 +6,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Web;
 using Watermeter.Project.API.Entities;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Models.User;
+using Watermeter.Project.API.Models.User.Create;
+using Watermeter.Project.API.Models.User.Login;
 using Watermeter.Project.API.Services.Interfaces;
 
 namespace Watermeter.Project.API.Services
@@ -17,12 +20,14 @@ namespace Watermeter.Project.API.Services
         private readonly IMapper msvc;
         private readonly UserManager<IdentityUser<int>> userManager;
         private readonly SignInManager<IdentityUser<int>> signInManager;
+        private readonly IEmailService emailService;
 
-        public UserService(IMapper msvc, UserManager<IdentityUser<int>> manager, SignInManager<IdentityUser<int>> signInManager)
+        public UserService(IMapper msvc, UserManager<IdentityUser<int>> manager, SignInManager<IdentityUser<int>> signInManager, IEmailService emailService)
         {
             this.msvc = msvc;
             this.userManager = manager;
             this.signInManager = signInManager;
+            this.emailService = emailService;
         }
 
         public async Task<Result> CreateUserAsync(OwnerModel model)
@@ -40,6 +45,14 @@ namespace Watermeter.Project.API.Services
                 else
                 {
                     var code = await userManager.GenerateEmailConfirmationTokenAsync(identityUser);
+
+                    var encodedCode = HttpUtility.UrlEncode(code);
+
+                    await emailService
+                        .SendEmailConfirmation(
+                        identityUser.Email.Select(c => c.ToString()).ToList(),
+                        "Email confirmation", $"{EnviromentConfig.Hosts.Localhost}/api/user/email/confirm?UserId={identityUser.Id}&ActivationCode={encodedCode}");
+
                     return Result.Ok().WithSuccess(code);
                 }
             }

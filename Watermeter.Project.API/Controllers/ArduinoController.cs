@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Models.Arduino;
 using Watermeter.Project.API.Services;
 using Watermeter.Project.API.Services.Interfaces;
 

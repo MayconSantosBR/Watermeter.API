@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Watermeter.Project.API.Entities;
-using Watermeter.Project.API.Models;
+using Watermeter.Project.API.Models.User;
+using Watermeter.Project.API.Models.User.Create;
+using Watermeter.Project.API.Models.User.Login;
 using Watermeter.Project.API.Services.Interfaces;
 
 namespace Watermeter.Project.API.Controllers
@@ -41,8 +43,8 @@ namespace Watermeter.Project.API.Controllers
             }
         }
 
-        [HttpPost("email/confirm")]
-        public async Task<IActionResult> ConfirmEmail([FromBody]ConfirmEmailBody body)
+        [HttpGet("email/confirm")]
+        public async Task<IActionResult> ConfirmEmail([FromQuery]ConfirmEmailBody body)
         {
             try
             {
